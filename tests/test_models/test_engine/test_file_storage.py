@@ -115,7 +115,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(json.loads(string), json.loads(js))
 
     def test_get(self):
-        """test that get returns an object of a given class by id."""
+        """Test that get returns an object of a given class by id."""
         storage = models.storage
         obj = State(name='Michigan')
         obj.save()
@@ -134,7 +134,7 @@ class TestFileStorage(unittest.TestCase):
             storage.get()
 
     def test_count(self):
-        """test that count returns the number of objects of given class."""
+        """Test that count returns the number of objects of given class."""
         storage = models.storage
         self.assertIs(type(storage.count()), int)
         self.assertIs(type(storage.count(None)), int)
