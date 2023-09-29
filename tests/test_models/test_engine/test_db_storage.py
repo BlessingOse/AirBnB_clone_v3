@@ -107,7 +107,7 @@ class TestFileStorage(unittest.TestCase):
             storage.get()
 
     def test_count(self):
-        """test that count returns the number of objects of a given class."""
+        """test that count returns the number of objects of given class."""
         storage = models.storage
         self.assertIs(type(storage.count()), int)
         self.assertIs(type(storage.count(None)), int)
