@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" objects that handle all default RestFul API actions for Users """
+"""handle all default RestFul API"""
 from models.user import User
 from models import storage
 from api.v1.views import app_views
@@ -11,8 +11,7 @@ from flasgger.utils import swag_from
 @swag_from('documentation/user/all_users.yml')
 def get_users():
     """
-    Retrieves the list of all user objects
-    or a specific user
+    Returns the list of all user
     """
     all_users = storage.all(User).values()
     list_users = []
@@ -24,7 +23,7 @@ def get_users():
 @app_views.route('/users/<user_id>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/user/get_user.yml', methods=['GET'])
 def get_user(user_id):
-    """ Retrieves an user """
+    """ Returns a user """
     user = storage.get(User, user_id)
     if not user:
         abort(404)
@@ -37,7 +36,7 @@ def get_user(user_id):
 @swag_from('documentation/user/delete_user.yml', methods=['DELETE'])
 def delete_user(user_id):
     """
-    Deletes a user Object
+    Del a user obj
     """
 
     user = storage.get(User, user_id)
@@ -55,7 +54,7 @@ def delete_user(user_id):
 @swag_from('documentation/user/post_user.yml', methods=['POST'])
 def post_user():
     """
-    Creates a user
+    creates a user
     """
     if not request.get_json():
         abort(400, description="Not a JSON")
@@ -75,7 +74,7 @@ def post_user():
 @swag_from('documentation/user/put_user.yml', methods=['PUT'])
 def put_user(user_id):
     """
-    Updates a user
+    Upd a user
     """
     user = storage.get(User, user_id)
 

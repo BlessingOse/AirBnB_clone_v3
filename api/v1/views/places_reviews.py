@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" objects that handle all default RestFul API actions for Reviews """
+"""handle all default RestFul API"""
 from models.review import Review
 from models.place import Place
 from models.user import User
@@ -14,7 +14,7 @@ from flasgger.utils import swag_from
 @swag_from('documentation/reviews/get_reviews.yml', methods=['GET'])
 def get_reviews(place_id):
     """
-    Retrieves the list of all Review objects of a Place
+    Returns the list of all Review obj
     """
     place = storage.get(Place, place_id)
 
@@ -30,7 +30,7 @@ def get_reviews(place_id):
 @swag_from('documentation/reviews/get_review.yml', methods=['GET'])
 def get_review(review_id):
     """
-    Retrieves a Review object
+    Returns a Review obj
     """
     review = storage.get(Review, review_id)
     if not review:
@@ -44,7 +44,7 @@ def get_review(review_id):
 @swag_from('documentation/reviews/delete_reviews.yml', methods=['DELETE'])
 def delete_review(review_id):
     """
-    Deletes a Review Object
+    Del a Review Obj
     """
 
     review = storage.get(Review, review_id)
@@ -95,7 +95,7 @@ def post_review(place_id):
 @swag_from('documentation/reviews/put_reviews.yml', methods=['PUT'])
 def put_review(review_id):
     """
-    Updates a Review
+    Upd a Review
     """
     review = storage.get(Review, review_id)
 
