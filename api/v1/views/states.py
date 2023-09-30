@@ -11,19 +11,19 @@ from flasgger.utils import swag_from
 @swag_from('documentation/state/get_state.yml', methods=['GET'])
 def get_states():
     """
-    Retrieves the list of all State objects
+    Return the list of all State objs
     """
     all_states = storage.all(State).values()
     list_states = []
-    for state in all_states:
-        list_states.append(state.to_dict())
+    for st in all_states:
+        list_states.append(st.to_dict())
     return jsonify(list_states)
 
 
 @app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/state/get_id_state.yml', methods=['get'])
 def get_state(state_id):
-    """ Retrieves a specific State """
+    """ Return a specific State """
     state = storage.get(State, state_id)
     if not state:
         abort(404)
@@ -36,7 +36,7 @@ def get_state(state_id):
 @swag_from('documentation/state/delete_state.yml', methods=['DELETE'])
 def delete_state(state_id):
     """
-    Deletes a State Object
+    Del a State Obj
     """
 
     state = storage.get(State, state_id)
@@ -72,7 +72,7 @@ def post_state():
 @swag_from('documentation/state/put_state.yml', methods=['PUT'])
 def put_state(state_id):
     """
-    Updates a State
+    Upd a State
     """
     state = storage.get(State, state_id)
 
